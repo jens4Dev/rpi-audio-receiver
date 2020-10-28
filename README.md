@@ -2,6 +2,8 @@
 
 A simple, light weight audio receiver with Bluetooth (A2DP), AirPlay, Spotify Connect and UPnP.
 
+Fork of nicokaiser/rpi-audio-receiver: added script to install upmpdcli & mpd for UPnP-render (I had issues using gmrender with my Sony Xperia's Music App)
+
 ## Features
 
 Devices like phones, tablets and computers can play audio via this receiver.
@@ -44,6 +46,11 @@ Installs [Raspotify](https://github.com/dtcooper/raspotify), an open source Spot
 ### UPnP
 
 Installs [gmrender-resurrect](http://github.com/hzeller/gmrender-resurrect) UPnP Renderer.
+
+### UPnP (upmpdcli)
+
+Installs [upmpdcli](https://www.lesbonscomptes.com/upmpdcli/index.html) UPnP Renderer which is a UPnP Media Renderer front-end for MPD, the Music Player Daemon.
+Please install only one of UPnP-renderer at the same time - I'd expect some trouble otherwise...
 
 ### Snapcast
 
