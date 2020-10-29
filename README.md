@@ -2,7 +2,10 @@
 
 A simple, light weight audio receiver with Bluetooth (A2DP), AirPlay, Spotify Connect and UPnP.
 
-Fork of nicokaiser/rpi-audio-receiver: added script to install upmpdcli & mpd for UPnP-render (I had issues using gmrender with my Sony Xperia's Music App)
+Fork of nicokaiser/rpi-audio-receiver:
+
+* added script to install upmpdcli & mpd for UPnP-render (I had issues using gmrender with my Music App)
+* added enabling standard sound (onboard e.g. HDMI, headphone-jack) or USB-PnP-devices to enable-hifiberry-script
 
 ## Features
 
@@ -10,15 +13,15 @@ Devices like phones, tablets and computers can play audio via this receiver.
 
 ## Requirements
 
-- Raspberry Pi with Bluetooth support (tested with Raspberry Pi 3, 4 and Zero W) or USB dongle (highly recommended!)
-- Raspbian Buster Lite (tested with August 2020 version)
-- Internal audio, HDMI, USB or I2S Audio adapter (tested with [Adafruit USB Audio Adapter](https://www.adafruit.com/product/1475),  [pHAT DAC](https://shop.pimoroni.de/products/phat-dac), and [HifiBerry DAC+](https://www.hifiberry.com/products/dacplus/))
+* Raspberry Pi with Bluetooth support (tested with Raspberry Pi 3, 4 and Zero W) or USB dongle (highly recommended!)
+* Raspbian Buster Lite (tested with August 2020 version)
+* Internal audio, HDMI, USB or I2S Audio adapter (tested with [Adafruit USB Audio Adapter](https://www.adafruit.com/product/1475),  [pHAT DAC](https://shop.pimoroni.de/products/phat-dac), and [HifiBerry DAC+](https://www.hifiberry.com/products/dacplus/))
 
 ## Installation
 
-The installation script asks whether to install each component.
+The installation script asks whether to install each component. You can start with a freshly installed raspbian, the only thing to do is changing the user's password..
 
-    wget -q https://github.com/nicokaiser/rpi-audio-receiver/archive/master.zip
+    wget -q https://github.com/jens4dev/rpi-audio-receiver/archive/master.zip
     unzip master.zip
     rm master.zip
 
@@ -56,17 +59,22 @@ Please install only one of UPnP-renderer at the same time - I'd expect some trou
 
 Installs [snapclient](https://github.com/badaix/snapcast), the client component of the Snapcast Synchronous multi-room audio player.
 
+### Enable sound
+
+The script helps you to enable and configure the sound devices. It will list the cards known to ALSA. You were asked whether you want to simply
+set one of the cards (like HDMI-output, headset-jack or e.g. an UPnP-USB-sounddevice) as the default audio device or you can enable a HifiBerry-board.
+
 ### Read-only mode
 
 To avoid SD card corruption when powering off, you can boot Raspbian in read-only mode. This is described by Adafruit in [this tutorial](https://learn.adafruit.com/read-only-raspberry-pi/) and cannot be undone.
 
 ## Limitations
 
-- Only one Bluetooth device can be connected at a time, otherwise interruptions may occur.
-- The device is always open, new clients can connect at any time without authentication.
-- To permanently save paired devices when using read-only mode, the Raspberry has to be switched to read-write mode (`mount -o remount,rw /`) until all devices have been paired once.
-- You might want to use a Bluetooth USB dongle or have the script disable Wi-Fi while connected (see `bluetooth-udev`), as the BCM43438 (Raspberry Pi 3, Zero W) has severe problems with both switched on, see [raspberrypi/linux/#1402](https://github.com/raspberrypi/linux/issues/1402).
-- The Pi Zero may not be powerful enough to play 192 kHz audio, you may want to change the values in `/etc/asound.conf` accordingly.
+* Only one Bluetooth device can be connected at a time, otherwise interruptions may occur.
+* The device is always open, new clients can connect at any time without authentication.
+* To permanently save paired devices when using read-only mode, the Raspberry has to be switched to read-write mode (`mount -o remount,rw /`) until all devices have been paired once.
+* You might want to use a Bluetooth USB dongle or have the script disable Wi-Fi while connected (see `bluetooth-udev`), as the BCM43438 (Raspberry Pi 3, Zero W) has severe problems with both switched on, see [raspberrypi/linux/#1402](https://github.com/raspberrypi/linux/issues/1402).
+* The Pi Zero may not be powerful enough to play 192 kHz audio, you may want to change the values in `/etc/asound.conf` accordingly.
 
 ## Disclaimer
 
@@ -84,10 +92,10 @@ Package and configuration choices are quite opinionated but as close to the Debi
 
 ## References
 
-- [BlueALSA: Bluetooth Audio ALSA Backend](https://github.com/Arkq/bluez-alsa)
-- [Shairport Sync: AirPlay Audio Receiver](https://github.com/mikebrady/shairport-sync)
-- [Raspotify: Spotify Connect client for the Raspberry Pi that Just Works™](https://github.com/dtcooper/raspotify)
-- [gmrender-resurrect: Headless UPnP Renderer](http://github.com/hzeller/gmrender-resurrect)
-- [Snapcast: Synchronous audio player](https://github.com/badaix/snapcast)
-- [pivumeter: ALSA plugin for displaying VU meters on various Raspberry Pi add-ons](https://github.com/pimoroni/pivumeter)
-- [Adafruit: Read-Only Raspberry Pi](https://github.com/adafruit/Raspberry-Pi-Installer-Scripts/blob/master/read-only-fs.sh)
+* [BlueALSA: Bluetooth Audio ALSA Backend](https://github.com/Arkq/bluez-alsa)
+* [Shairport Sync: AirPlay Audio Receiver](https://github.com/mikebrady/shairport-sync)
+* [Raspotify: Spotify Connect client for the Raspberry Pi that Just Works™](https://github.com/dtcooper/raspotify)
+* [gmrender-resurrect: Headless UPnP Renderer](http://github.com/hzeller/gmrender-resurrect)
+* [Snapcast: Synchronous audio player](https://github.com/badaix/snapcast)
+* [pivumeter: ALSA plugin for displaying VU meters on various Raspberry Pi add-ons](https://github.com/pimoroni/pivumeter)
+* [Adafruit: Read-Only Raspberry Pi](https://github.com/adafruit/Raspberry-Pi-Installer-Scripts/blob/master/read-only-fs.sh)
