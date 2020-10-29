@@ -8,22 +8,28 @@ read -r REPLY
 if [[ ! "$REPLY" =~ ^(yes|y|Y)$ ]]; then exit 0; fi
 
 # add signing keys
-cp files/jf-at-dockes.org.pgp /etc/apt/trusted.gpg.d/.
+cp files/jf-at-dockes.org.gpg /etc/apt/trusted.gpg.d/.
+chown _apt.root /etc/apt/trusted.gpg.d/jf-at-dockes.org.gpg
 cp files/deb.kaliko.me.gpg /etc/apt/trusted.gpg.d/.
+chown _apt.root /etc/apt/trusted.gpg.d/deb.kaliko.me.gpg
 
 # add packages sources
-cp files/upmpdcli.list /etc/apt/sources.list.d/.
+if [ ! -e /etc/apt/sources.list.d/upmpdcli.list ]; then 
+    cp files/upmpdcli.list /etc/apt/sources.list.d/.
+    apt update
+fi
 
 # update & install
-apt update
-apt install mpd/stable-backports
-apt install upmpdcli
+apt install -y mpd/stable-backports
+apt install -y upmpdcli
 
 PRETTY_HOSTNAME=$(hostnamectl status --pretty)
 PRETTY_HOSTNAME=${PRETTY_HOSTNAME:-$(hostname)}
 
 # set UPnP-name to the hostname
-sed -i "s/^#friendlyname = UpMpd/friendlyname = ${PRETTY_HOSTNAME}/g" upmpdcli.conf.dpkg-dist
+sed -i "s/^#friendlyname = UpMpd/friendlyname = ${PRETTY_HOSTNAME}/g" /etc/upmpdcli.conf
 
 systemctl enable --now mpd
 systemctl enable --now upmpdcli
+systemctl restart mpd
+systemctl restart upmpdcli
