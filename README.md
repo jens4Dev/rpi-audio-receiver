@@ -19,7 +19,7 @@ Devices like phones, tablets and computers can play audio via this receiver.
 
 ## Installation
 
-The installation script asks whether to install each component. You can start with a freshly installed raspbian, the only thing to do is changing the user's password..
+The installation script asks whether to install each component. You can start with a freshly installed raspbian, the only thing to do is changing the user's password.. It will also update the raspbian system and change the hostname from the default.
 
     wget -q https://github.com/jens4dev/rpi-audio-receiver/archive/master.zip
     unzip master.zip

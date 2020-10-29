@@ -24,3 +24,5 @@ sudo ./enable-read-only.sh
 
 echo
 echo "rpi-audio-receiver: Done!"
+echo 
+echo "Depending on the number and kind of system updates installed, you might want to reboot now..."
