@@ -21,11 +21,11 @@ Devices like phones, tablets and computers can play audio via this receiver.
 
 The installation script asks whether to install each component. You can start with a freshly installed raspbian, the only thing to do is changing the user's password.. It will also update the raspbian system and change the hostname from the default.
 
-    wget -q https://github.com/jens4dev/rpi-audio-receiver/archive/master.zip
-    unzip master.zip
-    rm master.zip
+    wget -q https://github.com/jens4dev/rpi-audio-receiver/archive/rpi-audio-receiver-upmpdcli.zip
+    unzip rpi-audio-receiver-upmpdcli.zip
+    rm \rpi-audio-receiver-upmpdcli.zip
 
-    cd rpi-audio-receiver-master
+    cd rpi-audio-receiver-upmpdcli
     ./install.sh
 
 ### Basic setup
@@ -40,7 +40,7 @@ Sets up Bluetooth, adds a simple agent that accepts every connection, and enable
 
 Installs [Shairport Sync](https://github.com/mikebrady/shairport-sync) AirPlay Audio Receiver.
 
-This script comes with a backported version of shairport-sync from Raspbian Bullseye (see [SimpleBackportCreation](https://wiki.debian.org/SimpleBackportCreation) for details) and can be replaced with the original (but older) one in Raspbian Buster or a sef-compiled one (not part of this project).
+This script comes with a backported version of shairport-sync from Raspberry Pi OS Bullseye (see [SimpleBackportCreation](https://wiki.debian.org/SimpleBackportCreation) for details) and can be replaced with the original (but older) one in Raspberry Pi OS Buster or a sef-compiled one (not part of this project).
 
 ### Spotify Connect
 
@@ -66,7 +66,7 @@ set one of the cards (like HDMI-output, headset-jack or e.g. an UPnP-USB-soundde
 
 ### Read-only mode
 
-To avoid SD card corruption when powering off, you can boot Raspbian in read-only mode. This is described by Adafruit in [this tutorial](https://learn.adafruit.com/read-only-raspberry-pi/) and cannot be undone.
+To avoid SD card corruption when powering off, you can boot Raspberry Pi OS in read-only mode. This is described by Adafruit in [this tutorial](https://learn.adafruit.com/read-only-raspberry-pi/) and cannot be undone.
 
 ## Limitations
 
@@ -76,13 +76,17 @@ To avoid SD card corruption when powering off, you can boot Raspbian in read-onl
 * You might want to use a Bluetooth USB dongle or have the script disable Wi-Fi while connected (see `bluetooth-udev`), as the BCM43438 (Raspberry Pi 3, Zero W) has severe problems with both switched on, see [raspberrypi/linux/#1402](https://github.com/raspberrypi/linux/issues/1402).
 * The Pi Zero may not be powerful enough to play 192 kHz audio, you may want to change the values in `/etc/asound.conf` accordingly.
 
+## Wiki
+
+There are some further examples, tweaks and how-tos in the [GitHub Wiki](https://github.com/nicokaiser/rpi-audio-receiver/wiki).
+
 ## Disclaimer
 
-These scripts are tested and work on a current (as of September 2020) Raspbian setup on Raspberry Pi. Depending on your setup (board, configuration, sound module, Bluetooth adapter) and your preferences, you might need to adjust the scripts. They are held as simple as possible and can be used as a starting point for additional adjustments.
+These scripts are tested and work on a current (as of September 2020) Raspberry Pi OS setup on Raspberry Pi. Depending on your setup (board, configuration, sound module, Bluetooth adapter) and your preferences, you might need to adjust the scripts. They are held as simple as possible and can be used as a starting point for additional adjustments.
 
 ## Upgrading
 
-This project does not really support upgrading to newer versions of this script. It is meant to be adjusted to your needs and run on a clean Raspbian install. When something goes wrong, the easiest way is to just wipe the SD card and start over. Since apart from Bluetooth pairing information all parts are stateless, this should be ok.
+This project does not really support upgrading to newer versions of this script. It is meant to be adjusted to your needs and run on a clean Raspberry Pi OS install. When something goes wrong, the easiest way is to just wipe the SD card and start over. Since apart from Bluetooth pairing information all parts are stateless, this should be ok.
 
 Updating the system using `apt-get upgrade` should work however.
 
