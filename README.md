@@ -2,17 +2,16 @@
 
 A simple, light weight audio receiver with Bluetooth (A2DP), AirPlay, Spotify Connect and UPnP.
 
-Fork of nicokaiser/rpi-audio-receiver:
+Fork of [nicokaiser/rpi-audio-receiver](https://github.com/nicokaiser/rpi-audio-receiver):
 
 * added script to install upmpdcli & mpd for UPnP-render (I had issues using gmrender with my Music App)
 * added enabling standard sound (onboard e.g. HDMI, headphone-jack) or USB-PnP-devices to enable-hifiberry-script
 
 Future of this fork:
 
-* Created PR to get enable standard sound devices into main.
+* Created PR to get enable standard sound devices into main (nicokaiser/rpi-audio-receiver#80).
 * Looking for a way to get the "either - or" of both DLNA / UPnP-implementation better checked in the script (assure that users
 do not install both). Until then I try to keep this fork up to other changes in upstream.
-
 ## Features
 
 Devices like phones, tablets and computers can play audio via this receiver.
