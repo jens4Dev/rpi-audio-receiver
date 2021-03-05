@@ -9,7 +9,7 @@ Fork of [nicokaiser/rpi-audio-receiver](https://github.com/nicokaiser/rpi-audio-
 
 Future of this fork:
 
-* Created PR to get enable standard sound devices into main (nicokaiser/rpi-audio-receiver#80).
+* Created PR to get enable standard sound devices into main [nicokaiser/rpi-audio-receiver#80](https://github.com/nicokaiser/rpi-audio-receiver/pull/80).
 * Looking for a way to get the "either - or" of both DLNA / UPnP-implementation better checked in the script (assure that users
 do not install both). Until then I try to keep this fork up to other changes in upstream.
 ## Features
